@@ -1,0 +1,57 @@
+:root {
+    --motion-x: 0;
+    --motion-y: 0;
+    --motion-scale: 1;
+    --motion-delay: 0;
+    --motion-durartion: .3s;
+}
+
+[class*='motion-'] {
+    transform: translate(var(--motion-x), var(--motion-y)) scale(var(--motion-scale));
+    transition-property: transform, opacity;
+    transition-delay: var(--motion-delay);
+    transition-duration: var(--motion-durartion);
+    transition-timing-function: $ease-out;
+    will-change: transform;
+    opacity: 0;
+
+    .has-motion & {
+        --motion-x: 0;
+        --motion-y: 0;
+        --motion-scale: 1;
+        opacity: 1;
+    }
+}
+
+.motion {
+
+    &-to-top {
+        --motion-y: 50px;
+    }
+
+    &-to-bottom {
+        --motion-y: -50px;
+    }
+
+    &-to-right {
+        --motion-x: -50px;
+    }
+
+    &-to-left {
+        --motion-x: 50px;
+    }
+
+    &-scale-in {
+        --motion-scale: 0.9;
+    }
+
+    &-scale-out {
+        --motion-scale: 1.1;
+    }
+}
+
+@for $i from 1 through 15 {
+    [class*='motion-'][data-delay='#{$i}'] {
+        --motion-delay: #{$i * 0.1 + s};
+    }
+}

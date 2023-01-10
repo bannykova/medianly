@@ -1,0 +1,180 @@
+.home {
+
+    &-hero {
+        display: grid;
+        place-content: center;
+        height: 100%;
+        position: relative;
+        margin-top: -91px;
+        isolation: isolate;
+
+        @include media(md) {
+            padding-top: 91px;
+        }
+
+        .title-1, .subtitle {
+            mix-blend-mode: overlay;
+        }
+
+        span.motion-to-top {
+            display: inline-block;
+        }
+
+        .btn {
+            width: 200px;
+        }
+
+        &:after, &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url('/assets/img/hero-mask.svg') no-repeat 50%;
+            z-index: 0;
+        }
+
+        &:after {
+            bottom: 14px;
+            mix-blend-mode: color-dodge;
+            z-index: -1;
+        }
+
+        #mash-gradient {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            inset: 0;
+            z-index: -3;
+            --gradient-color-1: #{$color-primary};
+            --gradient-color-2: #{$color-secondary};
+            --gradient-color-3: #{$color-primary};
+            --gradient-color-4: #{$color-primary};
+        }
+    }
+
+    &-service {
+        background: $color-secondary;
+        padding-block: 100px;
+        color: $color-primary;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 20%;
+            bottom: 0;
+            background: url('/assets/img/waves.svg') no-repeat;
+            z-index: -1;
+            transform: rotate(-45deg);
+            animation: wave-pulse 10s linear infinite alternate-reverse;
+
+            @keyframes wave-pulse {
+                0%, 100% {
+                    transform: rotate(-45deg) scaleX(1);
+                }
+
+                50% {
+                    transform: rotate(-20deg) scaleX(6);
+                }
+            }
+        }
+
+        &.is-light {
+            background-color: $color-primary;
+            color: $color-secondary;
+
+            &:after {
+                mix-blend-mode: difference;
+            }
+
+            li {
+                background-color: $color-primary;
+                border-color: rgba($color-black, .2);;
+            }
+        }
+
+        .subtitle {
+            max-width: 750px;
+        }
+
+        &-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            list-style: none;
+
+            li {
+                @extend .flex, .ai-center, .gap-20, .p-30;
+                background-color: $color-secondary;
+                border: 1px solid rgba($color-white, .2);
+                color: currentColor;
+                //box-shadow: 0 2px 5px rgba($color-black, 0.05), 0 10px 20px rgba($color-black, 0.06);
+                @include shadow(sm);
+                @include radius(lg);
+
+                .svg-icon {
+                    width: 40px;
+                    height: 40px;
+                    fill: currentColor;
+                }
+            }
+        }
+    }
+
+    &-contact {
+        background-color: $color-secondary;
+        padding-block: 30px;
+        color: $color-primary;
+
+        @include media(md) {
+            padding-block: 100px;
+        }
+
+        .wrapper {
+            display: grid;
+            @extend .gap-20, .gap-lg-40;
+
+            @include media(md) {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        &-form {
+            border: 1px solid rgba($color-white, .1);
+            background-color: rgba($color-primary, .1);
+            @include radius(lg);
+            @extend .p-20, .p-lg-30;
+
+            .btn {
+                width: 200px;
+            }
+
+            .form-control {
+                margin-top: -40px;
+                padding-top: 40px;
+            }
+        }
+
+        &-info {
+            @extend .p-20, .p-lg-30;
+
+            a:hover {
+                color: $color-accent;
+            }
+
+            .svg-icon {
+                width: 40px;
+                height: 40px;
+                flex-shrink: 0;
+                fill: $color-primary;
+            }
+        }
+    }
+}

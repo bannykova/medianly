@@ -1,0 +1,39 @@
+@each $breakpoint in map-keys($media) {
+    @include media($breakpoint) {
+        $bp: breakpoint($breakpoint);
+
+        @each $space in $spaces {
+            // Margins
+            .m#{$bp}-#{$space}  { margin: #{$space}px; }
+            .mt#{$bp}-#{$space} { margin-top: #{$space}px; }
+            .mb#{$bp}-#{$space} { margin-bottom: #{$space}px; }
+            .mr#{$bp}-#{$space} { margin-right: #{$space}px; }
+            .ml#{$bp}-#{$space} { margin-left: #{$space}px; }
+            .my#{$bp}-#{$space} { margin-block: #{$space}px; }
+            .mx#{$bp}-#{$space} { margin-inline: #{$space}px; }
+
+            // Paddings
+            .p#{$bp}-#{$space}  { padding: #{$space}px; }
+            .pt#{$bp}-#{$space} { padding-top: #{$space}px; }
+            .pb#{$bp}-#{$space} { padding-bottom: #{$space}px; }
+            .pr#{$bp}-#{$space} { padding-right: #{$space}px; }
+            .pl#{$bp}-#{$space} { padding-left: #{$space}px; }
+            .py#{$bp}-#{$space} { padding-block: #{$space}px; }
+            .px#{$bp}-#{$space} { padding-inline: #{$space}px; }
+
+            // Gaps
+            .gap#{$bp}-#{$space} {
+                gap: #{$space}px;
+            }
+        }
+
+        // Margin auto
+        .m#{$bp}-a  { margin: auto; }
+        .mt#{$bp}-a { margin-top: auto; }
+        .mb#{$bp}-a { margin-bottom: auto; }
+        .mr#{$bp}-a { margin-right: auto; }
+        .ml#{$bp}-a { margin-left: auto; }
+        .my#{$bp}-a { margin-block: auto; }
+        .mx#{$bp}-a { margin-inline: auto; }
+    }
+}

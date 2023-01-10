@@ -1,0 +1,59 @@
+.flex,
+[class*=jc-], [class*=ai-], [class*=ac-],
+[class*=fd-], [class*=fw-] {
+    display: flex;
+}
+
+@each $breakpoint in map-keys($media) {
+    @include media($breakpoint) {
+        $bp: breakpoint($breakpoint);
+
+        .fd#{$bp}-row          { flex-direction: row; }
+        .fd#{$bp}-col          { flex-direction: column; }
+        .fd#{$bp}-row-reverse  { flex-direction: row-reverse; }
+        .fd#{$bp}-col-reverse  { flex-direction: column-reverse; }
+
+        .fw#{$bp}-wrap         { flex-wrap: wrap; }
+        .fw#{$bp}-nowrap       { flex-wrap: nowrap; }
+        .fw#{$bp}-wrap-reverse { flex-wrap: wrap-reverse; }
+
+        .jc#{$bp}-start        { justify-content: flex-start; }
+        .jc#{$bp}-end          { justify-content: flex-end; }
+        .jc#{$bp}-center       { justify-content: center; }
+        .jc#{$bp}-between      { justify-content: space-between; }
+        .jc#{$bp}-around       { justify-content: space-around; }
+
+        .ai#{$bp}-start        { align-items: flex-start; }
+        .ai#{$bp}-end          { align-items: flex-end; }
+        .ai#{$bp}-center       { align-items: center; }
+        .ai#{$bp}-baseline     { align-items: baseline; }
+        .ai#{$bp}-stretch      { align-items: stretch; }
+
+        .ac#{$bp}-start        { align-content: flex-start; }
+        .ac#{$bp}-end          { align-content: flex-end; }
+        .ac#{$bp}-center       { align-content: center; }
+        .ac#{$bp}-between      { align-content: space-between; }
+        .ac#{$bp}-around       { align-content: space-around; }
+        .ac#{$bp}-stretch      { align-content: stretch; }
+
+        .as#{$bp}-auto         { align-self: auto; }
+        .as#{$bp}-start        { align-self: flex-start; }
+        .as#{$bp}-end          { align-self: flex-end; }
+        .as#{$bp}-center       { align-self: center; }
+        .as#{$bp}-baseline     { align-self: baseline; }
+        .as#{$bp}-stretch      { align-self: stretch; }
+
+        .fg#{$bp}-0            { flex-grow: 0; flex-basis: auto; }
+        .fg#{$bp}-1            { flex-grow: 1; flex-basis: auto; }
+        .fg#{$bp}-2            { flex-grow: 2; flex-basis: auto; }
+
+        .fs#{$bp}-0            { flex-shrink: 0; flex-basis: auto; }
+        .fs#{$bp}-1            { flex-shrink: 1; flex-basis: auto; }
+        .fs#{$bp}-2            { flex-shrink: 2; flex-basis: auto; }
+
+        .order#{$bp}-0         { order: 0; }
+        .order#{$bp}-1         { order: 1; }
+        .order#{$bp}-2         { order: 2; }
+        .order#{$bp}-3         { order: 3; }
+    }
+}

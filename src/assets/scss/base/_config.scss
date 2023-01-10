@@ -1,0 +1,64 @@
+// Colors
+$color-primary: #BEC8C2;
+$color-secondary: #222222;
+$color-accent: #FD983A;
+
+$color-white: #FFF;
+$color-black: #000;
+
+$color-text: $color-white;
+$color-background: $color-secondary;
+
+$color-green: #4FBF67;
+$color-red: #FF6628;
+$color-blue: #355DFF;
+$color-orange: #FF9F38;
+
+// Wrapper config
+$wrapper-size: 1200px;
+$wrapper-padding: 15px;
+
+// Fonts
+$font-primary: 'Alliance No.2', system-ui;
+$font-secondary: 'Inter', system-ui;
+
+// Easing
+$ease-in: cubic-bezier(.75, .18, .84, .63);
+$ease-out: cubic-bezier(.36, .52, .23, .93);
+
+// Text
+$sizes: 12, 14, 16, 18, 20, 25;
+$aligns: right, left, center, justify;
+
+// Widths & Heights
+$lengths: 25, 33, 50, 75, 100;
+
+// Spacing
+$spaces: 0, 5, 10, 20, 30, 40;
+
+// Breakpoints
+$media: (xs: 0, md: 768px, lg: 1024px, xl: 1200px, xxl: 1400px);
+$media-max: (md: 767px, lg: 1023px, xl: 1199px, xxl: 1399px);
+
+// Border Radius
+$radius: (xs: 4, sm: 8, md: 16, lg: 24);
+
+// Box shadow
+$shadow: (
+    sm: (0 20px 20px -5px rgb($color-black, .08), 0 8px 5px -5px rgb($color-black, .1)),
+    md: 0 6px 20px rgb($color-black, .3),
+);
+
+// Theme colors
+$colors: (
+    "primary":    $color-primary,
+    "secondary":  $color-secondary,
+
+    "success":    $color-green,
+    "danger":     $color-red,
+    "info":       $color-blue,
+    "warning":    $color-orange,
+
+    "light":      $color-white,
+    "dark":       $color-black,
+);

@@ -1,0 +1,11 @@
+.header {
+    background: rgba($color-secondary, .1);
+    border-bottom: 1px solid rgba($color-secondary, .1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+
+    a:hover {
+        color: $color-secondary;
+    }
+}

@@ -1,0 +1,113 @@
+// PX to REM
+@function rem($px, $base: 16) {
+    @return calc($px / $base) + rem;
+}
+
+// PX to EM
+@function em($px, $base: 16) {
+    @return calc($px / $base) + em;
+}
+
+// PX Stretch
+@function vw($px, $base: 1) {
+    @return calc(#{$px}px + #{$base} + vw);
+}
+
+// Border radius
+// Example: @include: radius(sm);
+@mixin radius($value) {
+    border-radius: map-get($radius, $value) + px;
+}
+
+// Shadows
+// Example: @include: shadow(sm);
+@mixin shadow($value) {
+    box-shadow: map-get($shadow, $value);
+}
+
+// Adaptive: Media min & max
+// Example: @include media(md) {}
+// Example: @include media(custom, 400) {}
+@mixin media($name, $value: '') {
+    @if $name == xs {
+        @content;
+    } @else if $name != custom {
+        @media (min-width: map-get($media, $name)) { @content; }
+    } @else {
+        @media (min-width: $value + 'px') { @content; }
+    }
+}
+
+@mixin media-max($name, $value: '') {
+    @if $name != custom {
+        @media (max-width: map-get($media-max, $name)) { @content; }
+    } @else {
+        @media (max-width: $value + 'px') { @content; }
+    }
+}
+
+// Adaptive: Add '-' if value not equal to 0
+@function breakpoint($name) {
+    $breakpoint: map-get($media, $name);
+    $result: if($breakpoint == 0, '', "-#{$name}");
+    @return $result;
+}
+
+// Only Mozilla
+@mixin mozilla() {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+// Print
+@mixin print() {
+    @media print {
+        @content;
+    }
+}
+
+// Multiline Ellipsis
+@mixin ellipsis($line: 3, $color: $color-primary) {
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 15%;
+        height: 1em;
+        content: '';
+        text-align: right;
+        background: linear-gradient(90deg, rgba($color, 0), rgba($color, 1) 50%);
+    }
+
+    @supports (-webkit-line-clamp: $line) {
+        display: -webkit-box;
+        height: auto;
+        -webkit-line-clamp: $line;
+        -webkit-box-orient: vertical;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+// Custom scrollbar
+@mixin scrollbar($color: $color-primary, $size: 5, $radius: 5) {
+    &::-webkit-scrollbar {
+        width: $size + px;
+        height: $size + px;
+
+        &-thumb {
+            background: $color;
+            border-radius: $radius + px;
+        }
+
+        &-track {
+            background: transparent;
+        }
+    }
+}
